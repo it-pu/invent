@@ -14,7 +14,8 @@
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="<?php echo base_url('assets/template/css/bootstrap.min.css'); ?>" rel="stylesheet" />
+		<link href="<?php echo base_url('assets/template/css/bootstrap.min.css'); ?>" rel="stylesheet" />
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> -->
 
     <!-- Animation library for notifications   -->
     <link href="<?php echo base_url('assets/template/css/animate.min.css'); ?>" rel="stylesheet"/>
@@ -100,16 +101,16 @@
                         <p>Finance</p>
                     </a>
                 </li>
-                <li>
-                    <a href="typography.html">
+                <li class="<?php if($this->uri->segment(1)=='inventory'){echo 'active';} ?>">
+                    <a href="<?php echo base_url('inventory'); ?>">
                         <i class="ti-archive"></i>
-                        <p>Assets</p>
+                        <p>Inventory</p>
                     </a>
                 </li>
-                <li>
-                    <a href="icons.html">
+                <li class="<?php if($this->uri->segment(1)=='budgeting'){echo 'active';} ?>">
+                    <a href="<?php echo base_url('budgeting'); ?>">
                         <i class="ti-server"></i>
-                        <p>Internal</p>
+                        <p>Budgeting</p>
                     </a>
                 </li>
                 <!-- <li>
@@ -144,24 +145,24 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-										<a class="navbar-brand" href="<?php echo base_url(''.$this->uri->segment(1)); ?>"><?php echo strtoupper($this->uri->segment(1)); ?></a>
+										<a class="navbar-brand" href="<?php echo base_url(''.$this->uri->segment(1)); ?>"><?php echo strtoupper(str_ireplace('-',' ',$this->uri->segment(1))); ?></a>
 
 
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
+                        <!-- <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="ti-panel"></i>
 								<p>Stats</p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="ti-bell"></i>
                                     <p class="notification">5</p>
-									<p>Notifications</p>
-									<b class="caret"></b>
+																		<p>Notifications</p>
+																		<b class="caret"></b>
                               </a>
                               <ul class="dropdown-menu">
                                 <li><a href="#">Notification 1</a></li>
@@ -171,10 +172,10 @@
                                 <li><a href="#">Another notification</a></li>
                               </ul>
                         </li>
-						<li>
+												<li>
                             <a href="#">
-								<i class="ti-settings"></i>
-								<p>Settings</p>
+														<i class="fa fa-sign-out"></i>
+														<p>Log Me Out</p>
                             </a>
                         </li>
                     </ul>

@@ -11,21 +11,7 @@ class Welcome extends CI_Controller {
         $this->load->library('cfpdf');
     }
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+
 	public function index()
 	{
 		$this->load->view('welcome_message');
@@ -42,9 +28,9 @@ class Welcome extends CI_Controller {
 		print_r($data_ttd);
 	}
 
-	public function buatpdf_af()
+	public function buatpdf_af($pdf)
 		{
-				$pdf = new FPDF();
+				// $pdf = new FPDF();
 				$pdf->AddPage('P','A4');
 
 				$url_logo = base_url('assets/logo.png');
@@ -202,14 +188,14 @@ class Welcome extends CI_Controller {
 
 
 
-				$pdf->Output();
+				// $pdf->Output();
 		}
 
 
 
-	function buatpdf_pr()
+	function buatpdf_pr($pdf)
     {
-        $pdf = new FPDF();
+        // $pdf = new FPDF();
         $pdf->AddPage('L','Legal');
 
 				$url_logo = base_url('assets/logo.png');
@@ -395,8 +381,16 @@ class Welcome extends CI_Controller {
 				}
 
 
-        $pdf->Output();
+        // $pdf->Output();
     }
+
+		public function test($value='')
+		{
+			$pdf = new FPDF();
+			$this->buatpdf_pr($pdf);
+			$this->buatpdf_af($pdf);
+			$pdf->Output();
+		}
 
 
 
